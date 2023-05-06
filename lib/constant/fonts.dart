@@ -1,4 +1,4 @@
-class FontAssets {
+class AppFonts {
   static const String interFont = "Inter";
-    static const String arizonia = "Arizonia";
+  static const String arizonia = "Arizonia";
 }

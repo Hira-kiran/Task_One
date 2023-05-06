@@ -31,7 +31,7 @@ class _BottomNavigationWState extends State<BottomNavigationW> {
           currentIndex: index,
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppColors.lightGreyshade,
-          selectedItemColor: AppColors.lightPink,
+          selectedItemColor: AppColors.brown,
           unselectedItemColor: AppColors.blackColor,
           items: const [
             BottomNavigationBarItem(

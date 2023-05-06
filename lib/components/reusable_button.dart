@@ -11,16 +11,18 @@ class ReusableButton extends StatelessWidget {
   final double width;
   final Color? color;
   final Color txtColor;
+  final bool loading;
 
-  ReusableButton(
-      {super.key,
-      required this.text,
-      required this.onclick,
-      this.height = 48,
-      this.width = 300,
-      this.color,
-      this.txtColor = AppColors.blackColor,
-     });
+  ReusableButton({
+    super.key,
+    required this.text,
+    required this.onclick,
+    this.height = 48,
+    this.width = 300,
+    this.loading = false,
+    this.color,
+    this.txtColor = AppColors.blackColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +36,18 @@ class ReusableButton extends StatelessWidget {
           color: color,
         ),
         child: Center(
-            child: Text(
-          text,
-          style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontFamily: FontAssets.interFont,
-              color: txtColor,
-              fontSize: 16),
-        )),
+            child: loading == true
+                ? const CircularProgressIndicator(
+                    color: AppColors.blackColor,
+                  )
+                : Text(
+                    text,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontFamily: AppFonts.interFont,
+                        color: txtColor,
+                        fontSize: 16),
+                  )),
       ),
     );
   }

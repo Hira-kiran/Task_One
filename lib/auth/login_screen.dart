@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:task_one/auth/login_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:task_one/auth/signup_screen.dart';
 import 'package:task_one/components/textformfield.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
-
+import 'package:task_one/constant/images.dart';
 import '../components/reusable_button.dart';
+import '../provider/login_provider.dart';
+import '../utils/utils.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final userNameController = TextEditingController();
+  final passwordcontroller = TextEditingController();
+
+  // ******* dispose 3 **********
+  @override
+  void dispose() {
+    userNameController.dispose();
+    passwordcontroller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -23,8 +42,8 @@ class LoginScreen extends StatelessWidget {
           title: const Text(
             "Task1",
             style: TextStyle(
-                color: AppColors.blackColor,
-                fontFamily: FontAssets.arizonia,
+                color: AppColors.whiteColor,
+                fontFamily: AppFonts.arizonia,
                 fontSize: 58,
                 fontWeight: FontWeight.w400),
           ),
@@ -33,7 +52,7 @@ class LoginScreen extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Image.asset(
-              "images/happyKids.png",
+              AppImages.kids,
               fit: BoxFit.cover,
             ),
             ShaderMask(
@@ -61,48 +80,54 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(
-                        height: 300,
-                      ),
+                      300.ph,
                       const Text(
                         "Welcome Back",
                         style: TextStyle(
                             color: AppColors.whiteColor,
                             fontSize: 28,
                             fontWeight: FontWeight.w700,
-                            fontFamily: FontAssets.interFont),
+                            fontFamily: AppFonts.interFont),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormFieldW(
-                        hintText: "Username",
-                        prefixIcon: const Icon(
-                          Icons.person_outline,
-                          color: AppColors.whiteColor,
+                      20.ph,
+                      Form(
+                        key: loginProvider.formKey,
+                        child: Column(
+                          children: [
+                            TextFormFieldW(
+                              controller: userNameController,
+                              hintText: "Username",
+                              prefixIcon: const Icon(
+                                Icons.person_outline,
+                                color: AppColors.whiteColor,
+                              ),
+                            ),
+                            20.ph,
+                            TextFormFieldW(
+                              controller: passwordcontroller,
+                              hintText: "Password",
+                              prefixIcon: const Icon(
+                                Icons.lock_outline,
+                                color: AppColors.whiteColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormFieldW(
-                        hintText: "Password",
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
+                      20.ph,
+                      Consumer<LoginProvider>(builder: (context, value, child) {
+                        return ReusableButton(
+                          text: "Sign In",
+                          loading: value.loading,
+                          onclick: () {
+                            value.setLoading(true);
+                            value.signIn(userNameController.value.text,
+                                passwordcontroller.value.text, context);
+                          },
                           color: AppColors.whiteColor,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ReusableButton(
-                        text: "Sign In",
-                        onclick: () {},
-                        color: AppColors.whiteColor,
-                      ),
-                      const SizedBox(
-                        height: 70,
-                      ),
+                        );
+                      }),
+                      70.ph,
                       Center(
                         child: Text(
                           "Don’t have an account?",
@@ -112,9 +137,7 @@ class LoginScreen extends StatelessWidget {
                               fontWeight: FontWeight.w400),
                         ),
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      5.ph,
                       Center(
                         child: InkWell(
                           onTap: () {

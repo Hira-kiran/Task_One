@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
+import 'package:task_one/constant/images.dart';
+import 'package:task_one/utils/utils.dart';
 import '../components/reusable_button.dart';
 import '../components/rounded_button.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -22,54 +19,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
           body: Center(
             child: TabBarView(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Column(
-                    children: [
-                      Text(
-                        textAlign: TextAlign.center,
-                        "4140 Parker Rd. Allentown, New \n Mexico 31134",
-                        style: TextStyle(
-                            color: AppColors.greyColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: FontAssets.interFont,
-                            fontSize: 16),
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                      ReusableButton(
-                        text: "Save",
-                        onclick: () {},
-                        txtColor: AppColors.whiteColor,
-                        color: AppColors.blackColor,
-                      ),
-                    ],
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Column(
+                      children: [
+                        Text(
+                          textAlign: TextAlign.center,
+                          "4140 Parker Rd. Allentown, New \n Mexico 31134",
+                          style: TextStyle(
+                              color: AppColors.greyColor,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: AppFonts.interFont,
+                              fontSize: 16),
+                        ),
+                        100.ph,
+                        ReusableButton(
+                          text: "Save",
+                          onclick: () {},
+                          txtColor: AppColors.whiteColor,
+                          color: AppColors.blackColor,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Column(
-                    children: [
-                      Text(
-                        textAlign: TextAlign.center,
-                        "4140 Parker Rd. Allentown, New \n Mexico 31134",
-                        style: TextStyle(
-                            color: AppColors.greyColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: FontAssets.interFont,
-                            fontSize: 16),
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                      ReusableButton(
-                        text: "Save",
-                        onclick: () {},
-                        txtColor: AppColors.whiteColor,
-                        color: AppColors.blackColor,
-                      ),
-                    ],
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Column(
+                      children: [
+                        Text(
+                          textAlign: TextAlign.center,
+                          "4140 Parker Rd. Allentown, New \n Mexico 31134",
+                          style: TextStyle(
+                              color: AppColors.greyColor,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: AppFonts.interFont,
+                              fontSize: 16),
+                        ),
+                        100.ph,
+                        ReusableButton(
+                          text: "Save",
+                          onclick: () {},
+                          txtColor: AppColors.whiteColor,
+                          color: AppColors.blackColor,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -78,6 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ));
   }
 
+// this is for appbar
   PreferredSize _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(500),
@@ -88,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             children: [
               _topBar(),
-              const SizedBox(height: 5),
+              5.ph,
               _interface(),
               _tabBar(),
             ],
@@ -115,6 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+// this is the ui between the appbar
   Widget _interface() {
     return Container(
       height: 400,
@@ -124,52 +123,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            const SizedBox(
-              height: 15,
-            ),
+            15.ph,
             Container(
               height: 82,
               width: 82,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("images/profile.png"),
+                      image: AssetImage(AppImages.profileImg),
                       fit: BoxFit.cover)),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            10.ph,
             const Text(
               "Dianne Russell",
               style: TextStyle(
-                  fontFamily: FontAssets.interFont,
+                  fontFamily: AppFonts.interFont,
                   fontSize: 16,
                   fontWeight: FontWeight.w700),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            10.ph,
             Text(
               textAlign: TextAlign.center,
               "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim.",
               style: TextStyle(
-                  fontFamily: FontAssets.interFont,
+                  fontFamily: AppFonts.interFont,
                   fontSize: 16,
                   color: AppColors.greyColor,
                   fontWeight: FontWeight.w500),
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            40.ph,
             const Text(
               "Birthday",
               style: TextStyle(
-                  fontFamily: FontAssets.interFont,
+                  fontFamily: AppFonts.interFont,
                   fontSize: 16,
                   fontWeight: FontWeight.w500),
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            40.ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -185,20 +174,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Column(
                   children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    15.ph,
                     RoundedBtn(
                       text: "1993",
                       boxBorder: Border.all(color: AppColors.blackColor),
                     ),
-                    const SizedBox(
-                      height: 4,
-                    ),
+                    4.ph,
                     Text(
                       "Optional",
                       style: TextStyle(
-                          fontFamily: FontAssets.interFont,
+                          fontFamily: AppFonts.interFont,
                           color: AppColors.greyColor,
                           fontSize: 11,
                           fontWeight: FontWeight.w500),
@@ -216,7 +201,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 // ********************* Tabbar *************************
   Widget _tabBar() {
     return TabBar(
-      // labelPadding: const EdgeInsets.all(0),
       labelColor: AppColors.blackColor,
       indicatorColor: AppColors.blackColor,
       unselectedLabelColor: AppColors.greyColor,

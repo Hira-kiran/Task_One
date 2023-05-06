@@ -6,7 +6,7 @@ import '../constant/fonts.dart';
 
 class TextFormFieldW extends StatelessWidget {
   String hintText;
-  // final TextEditingController controller;
+  final TextEditingController controller;
   final Widget? prefixIcon;
   final FormFieldValidator? validator;
   final FormFieldValidator? onsaved;
@@ -17,7 +17,7 @@ class TextFormFieldW extends StatelessWidget {
   TextFormFieldW({
     super.key,
     required this.hintText,
-    // required this.controller,
+    required this.controller,
     this.prefixIcon,
     this.onsaved,
     this.onChanged,
@@ -30,13 +30,11 @@ class TextFormFieldW extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
         obscureText: obscure,
-        /*   maxLines: maxlines, */
         style: const TextStyle(
-            color: AppColors.whiteColor, fontFamily: FontAssets.interFont),
+            color: AppColors.whiteColor, fontFamily: AppFonts.interFont),
         cursorColor: AppColors.whiteColor,
         keyboardType: TextInputType.emailAddress,
-
-        // controller: controller,
+        controller: controller,
         decoration: InputDecoration(
             border: OutlineInputBorder(
                 borderSide: const BorderSide(color: AppColors.whiteColor),
@@ -50,11 +48,8 @@ class TextFormFieldW extends StatelessWidget {
             hintText: hintText,
             hintStyle: const TextStyle(
                 fontSize: 14,
-                fontFamily: FontAssets.interFont,
+                fontFamily: AppFonts.interFont,
                 color: AppColors.whiteColor),
-            // labelText: "Email",
-            /*  filled: true,
-            fillColor: AppColors.blackColor, */
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon),
         onChanged: onChanged,

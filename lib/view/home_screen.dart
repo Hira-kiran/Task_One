@@ -1,6 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:task_one/auth/signup_screen.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
+import 'package:task_one/constant/images.dart';
+
+import '../utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final auth = FirebaseAuth.instance;
+
   bool isExpanded = false;
   String selectedValue = 'Categories';
 
@@ -24,10 +31,23 @@ class _HomeScreenState extends State<HomeScreen> {
     'Books',
     'Home Decor'
   ];
+
+  /*  // Item images
+  List imagesList = [
+    AppImages.shoesImg,
+    AppImages.bagImg,
+    AppImages.cloth,
+    AppImages.entertainment,
+    AppImages.jewlery,
+    AppImages.food,
+    AppImages.book,
+    AppImages.lamp,
+  ]; */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 70,
         backgroundColor: AppColors.blackColor,
         centerTitle: true,
@@ -35,12 +55,26 @@ class _HomeScreenState extends State<HomeScreen> {
           "Gift Folder",
           style: TextStyle(
               fontSize: 20,
-              fontFamily: FontAssets.interFont,
+              fontFamily: AppFonts.interFont,
               fontWeight: FontWeight.w700),
         ),
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.settings_outlined))
+              onPressed: () async {
+                // For logout user
+                await auth.signOut().then((value) {
+                  Utils().toastmsj(
+                    "Logout Successfully",
+                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignupScreen()));
+                }).onError((error, stackTrace) {
+                  Utils().toastmsj(error.toString());
+                });
+              },
+              icon: const Icon(Icons.logout))
         ],
       ),
       body: SingleChildScrollView(
@@ -50,42 +84,31 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Column(
                 children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  15.ph,
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         children: [
-                          Image.asset("images/shoes.png"),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Image.asset("images/bag.png"),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Image.asset("images/dress.png"),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Image.asset("images/shoes.png"),
+                          Image.asset(AppImages.shoes),
+                          15.pw,
+                          Image.asset(AppImages.bag),
+                          15.pw,
+                          Image.asset(AppImages.dress),
+                          15.pw,
+                          Image.asset(AppImages.shoes),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              30.ph,
               Container(
                 width: double.infinity,
                 height: 60,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
                   borderRadius: BorderRadius.only(
                     topLeft: const Radius.circular(5),
                     topRight: const Radius.circular(5),
@@ -108,15 +131,20 @@ class _HomeScreenState extends State<HomeScreen> {
                             Expanded(
                                 child: Text(
                               selectedValue,
+                              style: const TextStyle(
+                                  fontFamily: AppFonts.interFont,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700),
                             )),
                             Icon(
                               isExpanded
-                                  ? Icons.keyboard_arrow_up
-                                  : Icons.keyboard_arrow_down,
+                                  ? Icons.keyboard_arrow_down
+                                  : Icons.keyboard_arrow_up,
+                              size: 30,
                               color: isExpanded
-                                  ? AppColors.greyColor
-                                  : AppColors.blackColor,
-                            )
+                                  ? AppColors.blackColor
+                                  : AppColors.greyColor,
+                            ),
                           ],
                         )),
                   ),
@@ -133,31 +161,39 @@ class _HomeScreenState extends State<HomeScreen> {
                               selectedValue = e;
                               setState(() {});
                             },
-                            child: Container(
-                                height: 40,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: selectedValue == e
-                                      ? Colors.black
-                                      : Colors.grey.shade300,
-                                ),
-                                child: Center(
-                                    child: Text(
-                                  e.toString(),
-                                  style: TextStyle(
-                                      color: selectedValue == e
-                                          ? AppColors.whiteColor
-                                          : AppColors.blackColor),
-
-                                  /*  style: Theme.of(context)
-                                      .textTheme
-                                      .headline2!
-                                      .copyWith(
-                                          fontSize: 14,
-                                          color: selectedValue == e
-                                              ? AppColors.whiteColor
-                                              : AppColors.blackColor), */
-                                ))),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                  height: 52,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: selectedValue == e
+                                        ? Colors.black
+                                        : AppColors.lightPink,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          e.toString(),
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: AppFonts.interFont,
+                                              color: selectedValue == e
+                                                  ? AppColors.whiteColor
+                                                  : AppColors.blackColor),
+                                        ),
+                                        Image.asset(AppImages.shoesImg),
+                                      ],
+                                    ),
+                                  )),
+                            ),
                           ))
                       .toList(),
                 )
