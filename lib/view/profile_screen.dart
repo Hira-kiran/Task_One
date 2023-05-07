@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task_one/components/reusableTextWidget.dart';
 import 'package:task_one/constant/colors.dart';
-import 'package:task_one/constant/fonts.dart';
 import 'package:task_one/constant/images.dart';
 import 'package:task_one/utils/utils.dart';
 import '../components/reusable_button.dart';
@@ -24,15 +24,12 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Column(
                       children: [
-                        Text(
-                          textAlign: TextAlign.center,
-                          "4140 Parker Rd. Allentown, New \n Mexico 31134",
-                          style: TextStyle(
-                              color: AppColors.greyColor,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: AppFonts.interFont,
-                              fontSize: 16),
-                        ),
+                        ReusableTextW(
+                            textAlign: TextAlign.center,
+                            textClr: AppColors.greyColor,
+                            fontSize: 16,
+                            text:
+                                "4140 Parker Rd. Allentown, New \n Mexico 31134"),
                         100.ph,
                         ReusableButton(
                           text: "Save",
@@ -49,15 +46,12 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Column(
                       children: [
-                        Text(
-                          textAlign: TextAlign.center,
-                          "4140 Parker Rd. Allentown, New \n Mexico 31134",
-                          style: TextStyle(
-                              color: AppColors.greyColor,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: AppFonts.interFont,
-                              fontSize: 16),
-                        ),
+                        ReusableTextW(
+                            textAlign: TextAlign.center,
+                            textClr: AppColors.greyColor,
+                            fontSize: 16,
+                            text:
+                                "4140 Parker Rd. Allentown, New \n Mexico 31134"),
                         100.ph,
                         ReusableButton(
                           text: "Save",
@@ -98,17 +92,9 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _topBar() {
     return Row(
-      children: const [
+      children: [
         Expanded(
-          child: Text(
-            'Profile',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: AppColors.blackColor,
-                fontSize: 20,
-                fontWeight: FontWeight.w700),
-          ),
-        ),
+            child: ReusableTextW(text: "Profile", fontWeight: FontWeight.w700)),
       ],
     );
   }
@@ -133,30 +119,21 @@ class ProfileScreen extends StatelessWidget {
                       fit: BoxFit.cover)),
             ),
             10.ph,
-            const Text(
-              "Dianne Russell",
-              style: TextStyle(
-                  fontFamily: AppFonts.interFont,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700),
+            ReusableTextW(
+              text: "Dianne Russell",
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
             ),
             10.ph,
-            Text(
-              textAlign: TextAlign.center,
-              "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim.",
-              style: TextStyle(
-                  fontFamily: AppFonts.interFont,
-                  fontSize: 16,
-                  color: AppColors.greyColor,
-                  fontWeight: FontWeight.w500),
-            ),
+            ReusableTextW(
+                fontSize: 16,
+                textClr: AppColors.greyColor,
+                text:
+                    "Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim."),
             40.ph,
-            const Text(
-              "Birthday",
-              style: TextStyle(
-                  fontFamily: AppFonts.interFont,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500),
+            ReusableTextW(
+              text: "Birthday",
+              fontSize: 16,
             ),
             40.ph,
             Row(
@@ -180,13 +157,10 @@ class ProfileScreen extends StatelessWidget {
                       boxBorder: Border.all(color: AppColors.blackColor),
                     ),
                     4.ph,
-                    Text(
-                      "Optional",
-                      style: TextStyle(
-                          fontFamily: AppFonts.interFont,
-                          color: AppColors.greyColor,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w500),
+                    ReusableTextW(
+                      text: "Optional",
+                      textClr: AppColors.greyColor,
+                      fontSize: 11,
                     ),
                   ],
                 )

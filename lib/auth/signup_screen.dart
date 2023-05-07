@@ -1,16 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_one/auth/login_screen.dart';
-import 'package:task_one/components/textformfield.dart';
+import 'package:task_one/components/reusableTextWidget.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
 import 'package:task_one/constant/images.dart';
 import 'package:task_one/provider/signup_provider.dart';
-import 'package:task_one/widgets/bottom_Nav_Bar.dart';
 import '../components/reusable_button.dart';
-import '../provider/login_provider.dart';
 import '../utils/utils.dart';
+import '../widgets/textformfield.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -23,7 +21,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final userNameController = TextEditingController();
   final passwordcontroller = TextEditingController();
 
-  // ******* dispose 3 **********
+  // ******* dispose **********
   @override
   void dispose() {
     userNameController.dispose();
@@ -45,7 +43,7 @@ class _SignupScreenState extends State<SignupScreen> {
           title: const Text(
             "Task1",
             style: TextStyle(
-                color: AppColors.whiteColor,
+                color: AppColors.blackColor,
                 fontFamily: AppFonts.arizonia,
                 fontSize: 58,
                 fontWeight: FontWeight.w400),
@@ -79,18 +77,15 @@ class _SignupScreenState extends State<SignupScreen> {
                         colors: [AppColors.blackColor, AppColors.blackColor])),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: ListView(
                     children: [
-                      300.ph,
-                      const Text(
-                        "Create Account",
-                        style: TextStyle(
-                            color: AppColors.whiteColor,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: AppFonts.interFont),
+                      200.ph,
+                      ReusableTextW(
+                        text: "Create Account",
+                        textClr: AppColors.whiteColor,
+                        fontSize: 28,
+                        textAlign: TextAlign.start,
+                        fontWeight: FontWeight.w700,
                       ),
                       20.ph,
                       Form(
@@ -113,7 +108,6 @@ class _SignupScreenState extends State<SignupScreen> {
                                 if (value!.isEmpty) {
                                   return "Please enter Username";
                                 }
-
                                 if (!regExp.hasMatch(value)) {
                                   return "Enter valid Username (3 character)";
                                 }
@@ -123,6 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             20.ph,
                             TextFormFieldW(
+                                obscure: true,
                                 controller: passwordcontroller,
                                 hintText: "Password",
                                 prefixIcon: const Icon(
@@ -138,7 +133,6 @@ class _SignupScreenState extends State<SignupScreen> {
                                   if (value!.isEmpty) {
                                     return "Please enter your password";
                                   }
-
                                   if (!regExp.hasMatch(value)) {
                                     return " Enter password password (6 character)";
                                   }
@@ -164,14 +158,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       }),
                       70.ph,
                       Center(
-                        child: Text(
-                          "Already a User?",
-                          style: TextStyle(
-                              color: AppColors.greyColor,
+                          child: ReusableTextW(
+                              text: "Already a User?",
+                              textClr: AppColors.greyColor,
                               fontSize: 14,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
+                              fontWeight: FontWeight.w400)),
                       5.ph,
                       Center(
                         child: InkWell(
@@ -181,15 +172,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => const LoginScreen()));
                           },
-                          child: const Text(
-                            "Sign In",
-                            style: TextStyle(
-                                color: AppColors.whiteColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
+                          child: ReusableTextW(
+                              text: "Sign In",
+                              textClr: AppColors.whiteColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
+                      15.ph
                     ],
                   ),
                 ),

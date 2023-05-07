@@ -1,8 +1,7 @@
 // ignore_for_file: file_names, must_be_immutable
-
 import 'package:flutter/material.dart';
 import '../constant/colors.dart';
-import '../constant/fonts.dart';
+import 'reusableTextWidget.dart';
 
 class ReusableButton extends StatelessWidget {
   String text;
@@ -40,14 +39,11 @@ class ReusableButton extends StatelessWidget {
                 ? const CircularProgressIndicator(
                     color: AppColors.blackColor,
                   )
-                : Text(
-                    text,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontFamily: AppFonts.interFont,
-                        color: txtColor,
-                        fontSize: 16),
-                  )),
+                : ReusableTextW(
+                    text: text,
+                    fontWeight: FontWeight.w600,
+                    textClr: txtColor,
+                    fontSize: 16)),
       ),
     );
   }

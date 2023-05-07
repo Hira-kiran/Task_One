@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import '../constant/colors.dart';
-import '../constant/fonts.dart';
+import 'reusableTextWidget.dart';
 
 class RoundedBtn extends StatelessWidget {
   final Color? color;
@@ -29,14 +29,7 @@ class RoundedBtn extends StatelessWidget {
         color: color,
       ),
       child: Center(
-          child: Text(
-        text,
-        style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontFamily: AppFonts.interFont,
-            color: txtColor,
-            fontSize: 16),
-      )),
+          child: ReusableTextW(text: text, textClr: txtColor, fontSize: 16)),
     );
   }
 }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_one/auth/signup_screen.dart';
-import 'package:task_one/components/textformfield.dart';
+import 'package:task_one/components/reusableTextWidget.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
 import 'package:task_one/constant/images.dart';
 import '../components/reusable_button.dart';
 import '../provider/login_provider.dart';
 import '../utils/utils.dart';
+import '../widgets/textformfield.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final userNameController = TextEditingController();
   final passwordcontroller = TextEditingController();
 
-  // ******* dispose 3 **********
+  // ******* dispose **********
   @override
   void dispose() {
     userNameController.dispose();
@@ -42,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
           title: const Text(
             "Task1",
             style: TextStyle(
-                color: AppColors.whiteColor,
+                color: AppColors.blackColor,
                 fontFamily: AppFonts.arizonia,
                 fontSize: 58,
                 fontWeight: FontWeight.w400),
@@ -76,18 +77,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         colors: [AppColors.blackColor, AppColors.blackColor])),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: ListView(
                     children: [
-                      300.ph,
-                      const Text(
-                        "Welcome Back",
-                        style: TextStyle(
-                            color: AppColors.whiteColor,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: AppFonts.interFont),
+                      200.ph,
+                      ReusableTextW(
+                        text: "Welcome Back",
+                        textAlign: TextAlign.start,
+                        textClr: AppColors.whiteColor,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
                       ),
                       20.ph,
                       Form(
@@ -106,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextFormFieldW(
                               controller: passwordcontroller,
                               hintText: "Password",
+                              obscure: true,
                               prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: AppColors.whiteColor,
@@ -129,33 +128,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       }),
                       70.ph,
                       Center(
-                        child: Text(
-                          "Don’t have an account?",
-                          style: TextStyle(
-                              color: AppColors.greyColor,
+                          child: ReusableTextW(
+                              text: "Don’t have an account?",
+                              textClr: AppColors.greyColor,
                               fontSize: 14,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
+                              fontWeight: FontWeight.w400)),
                       5.ph,
                       Center(
                         child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SignupScreen()));
-                          },
-                          child: const Text(
-                            "Sign Up",
-                            style: TextStyle(
-                                color: AppColors.whiteColor,
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignupScreen()));
+                            },
+                            child: ReusableTextW(
+                                text: "Sign Up",
+                                textClr: AppColors.whiteColor,
                                 fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
+                                fontWeight: FontWeight.w600)),
                       ),
+                      15.ph
                     ],
                   ),
                 ),

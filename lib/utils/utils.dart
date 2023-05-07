@@ -15,7 +15,6 @@ class Utils {
         fontSize: 16.0);
   }
 }
-
 // *********** sized box *****************
 extension PaddingSizedBox on num {
   SizedBox get ph => SizedBox(height: toDouble());

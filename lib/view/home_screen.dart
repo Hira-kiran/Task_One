@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:task_one/auth/signup_screen.dart';
+import 'package:task_one/components/reusableTextWidget.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
 import 'package:task_one/constant/images.dart';
@@ -16,10 +17,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final auth = FirebaseAuth.instance;
-
   bool isExpanded = false;
   String selectedValue = 'Categories';
-
   //list that will be expanded
   List<String> items = [
     'Shoes',
@@ -31,18 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'Books',
     'Home Decor'
   ];
-
-  /*  // Item images
-  List imagesList = [
-    AppImages.shoesImg,
-    AppImages.bagImg,
-    AppImages.cloth,
-    AppImages.entertainment,
-    AppImages.jewlery,
-    AppImages.food,
-    AppImages.book,
-    AppImages.lamp,
-  ]; */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,27 +69,23 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-              Column(
-                children: [
-                  15.ph,
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        children: [
-                          Image.asset(AppImages.shoes),
-                          15.pw,
-                          Image.asset(AppImages.bag),
-                          15.pw,
-                          Image.asset(AppImages.dress),
-                          15.pw,
-                          Image.asset(AppImages.shoes),
-                        ],
-                      ),
-                    ),
+              15.ph,
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    children: [
+                      Image.asset(AppImages.shoes),
+                      15.pw,
+                      Image.asset(AppImages.bag),
+                      15.pw,
+                      Image.asset(AppImages.dress),
+                      15.pw,
+                      Image.asset(AppImages.shoes),
+                    ],
                   ),
-                ],
+                ),
               ),
               30.ph,
               Container(
@@ -129,12 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                                child: Text(
-                              selectedValue,
-                              style: const TextStyle(
-                                  fontFamily: AppFonts.interFont,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700),
+                                child: ReusableTextW(
+                              text: selectedValue,
+                              textAlign: TextAlign.start,
+                              fontWeight: FontWeight.w700,
                             )),
                             Icon(
                               isExpanded
@@ -179,15 +160,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          e.toString(),
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: AppFonts.interFont,
-                                              color: selectedValue == e
-                                                  ? AppColors.whiteColor
-                                                  : AppColors.blackColor),
+                                        ReusableTextW(
+                                          text: e.toString(),
+                                          textClr: selectedValue == e
+                                              ? AppColors.whiteColor
+                                              : AppColors.blackColor,
+                                          fontSize: 16,
                                         ),
                                         Image.asset(AppImages.shoesImg),
                                       ],
