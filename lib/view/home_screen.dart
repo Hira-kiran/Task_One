@@ -5,7 +5,6 @@ import 'package:task_one/components/reusableTextWidget.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
 import 'package:task_one/constant/images.dart';
-
 import '../utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,14 +27,16 @@ class _HomeScreenState extends State<HomeScreen> {
     'Jewelry',
     'Food',
     'Books',
-    'Home Decor'
+    // 'Home Decor'
   ];
   List<String> imgs = [
     AppImages.shoesImg,
-    AppImages.bag,
+    AppImages.bagImg,
+    AppImages.cloth,
     AppImages.entertainment,
-    AppImages.shoesImg,
-    AppImages.shoesImg,
+    AppImages.jewlery,
+    AppImages.food,
+    AppImages.book,
   ];
 
   @override
@@ -141,48 +142,48 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               if (isExpanded)
                 ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: items
-                      .map((e) => InkWell(
-                            onTap: () {
-                              isExpanded = false;
-                              selectedValue = e;
-                              setState(() {});
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                  height: 52,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: selectedValue == e
-                                        ? Colors.black
-                                        : AppColors.lightPink,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        ReusableTextW(
-                                          text: e.toString(),
-                                          textClr: selectedValue == e
-                                              ? AppColors.whiteColor
-                                              : AppColors.blackColor,
-                                          fontSize: 16,
-                                        ),
-                                        Image.asset(AppImages.shoesImg),
-                                      ],
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: List.generate(
+                        items.length,
+                        (index) => InkWell(
+                              onTap: () {
+                                isExpanded = false;
+                                selectedValue = items[index];
+                                setState(() {});
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                    height: 52,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: selectedValue == items[index]
+                                          ? Colors.black
+                                          : AppColors.lightPink,
                                     ),
-                                  )),
-                            ),
-                          ))
-                      .toList(),
-                )
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          ReusableTextW(
+                                            text: items[index].toString(),
+                                            textClr:
+                                                selectedValue == items[index]
+                                                    ? AppColors.whiteColor
+                                                    : AppColors.blackColor,
+                                            fontSize: 16,
+                                          ),
+                                          Image.asset(imgs[index].toString()),
+                                        ],
+                                      ),
+                                    )),
+                              ),
+                            ))),
             ],
           ),
         ),
