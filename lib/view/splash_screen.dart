@@ -2,10 +2,10 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:task_one/auth/signup_screen.dart';
 import 'package:task_one/widgets/bottom_Nav_Bar.dart';
 import '../constant/colors.dart';
 import '../constant/fonts.dart';
+import 'signup_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

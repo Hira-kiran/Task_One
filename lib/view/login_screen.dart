@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task_one/auth/signup_screen.dart';
 import 'package:task_one/components/reusableTextWidget.dart';
 import 'package:task_one/constant/colors.dart';
 import 'package:task_one/constant/fonts.dart';
@@ -9,6 +8,7 @@ import '../components/reusable_button.dart';
 import '../provider/login_provider.dart';
 import '../utils/utils.dart';
 import '../widgets/textformfield.dart';
+import 'signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
