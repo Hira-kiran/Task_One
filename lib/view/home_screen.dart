@@ -30,6 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
     'Books',
     'Home Decor'
   ];
+  List<String> imgs = [
+    AppImages.shoesImg,
+    AppImages.bag,
+    AppImages.entertainment,
+    AppImages.shoesImg,
+    AppImages.shoesImg,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,12 +127,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             )),
                             Icon(
                               isExpanded
-                                  ? Icons.keyboard_arrow_down
-                                  : Icons.keyboard_arrow_up,
+                                  ? Icons.keyboard_arrow_up
+                                  : Icons.keyboard_arrow_down,
                               size: 30,
                               color: isExpanded
-                                  ? AppColors.blackColor
-                                  : AppColors.greyColor,
+                                  ? AppColors.greyColor
+                                  : AppColors.blackColor,
                             ),
                           ],
                         )),

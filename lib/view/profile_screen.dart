@@ -24,6 +24,7 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Column(
                       children: [
+                        20.ph,
                         ReusableTextW(
                             textAlign: TextAlign.center,
                             textClr: AppColors.greyColor,
@@ -46,6 +47,7 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Column(
                       children: [
+                        20.ph,
                         ReusableTextW(
                             textAlign: TextAlign.center,
                             textClr: AppColors.greyColor,
@@ -72,10 +74,10 @@ class ProfileScreen extends StatelessWidget {
 // this is for appbar
   PreferredSize _appBar() {
     return PreferredSize(
-      preferredSize: const Size.fromHeight(500),
+      preferredSize: const Size.fromHeight(498),
       child: Container(
         margin: const EdgeInsets.only(top: 10),
-        decoration: const BoxDecoration(color: AppColors.whiteColor),
+        decoration: const BoxDecoration(color: AppColors.blackColor),
         child: SafeArea(
           child: Column(
             children: [
@@ -94,7 +96,11 @@ class ProfileScreen extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            child: ReusableTextW(text: "Profile", fontWeight: FontWeight.w700)),
+            child: ReusableTextW(
+          text: "Profile",
+          fontWeight: FontWeight.w700,
+          textClr: AppColors.whiteColor,
+        )),
       ],
     );
   }
@@ -103,6 +109,7 @@ class ProfileScreen extends StatelessWidget {
   Widget _interface() {
     return Container(
       height: 400,
+      margin: const EdgeInsets.only(top: 10),
       width: double.infinity,
       decoration: const BoxDecoration(color: AppColors.whiteColor),
       child: Padding(
@@ -174,18 +181,21 @@ class ProfileScreen extends StatelessWidget {
 
 // ********************* Tabbar *************************
   Widget _tabBar() {
-    return TabBar(
-      labelColor: AppColors.blackColor,
-      indicatorColor: AppColors.blackColor,
-      unselectedLabelColor: AppColors.greyColor,
-      tabs: const [
-        Tab(
-          text: 'Address',
-        ),
-        Tab(
-          text: 'Size',
-        ),
-      ],
+    return Container(
+      color: AppColors.whiteColor,
+      child: TabBar(
+        labelColor: AppColors.blackColor,
+        indicatorColor: AppColors.blackColor,
+        unselectedLabelColor: AppColors.greyColor,
+        tabs: const [
+          Tab(
+            text: 'Address',
+          ),
+          Tab(
+            text: 'Size',
+          ),
+        ],
+      ),
     );
   }
 }

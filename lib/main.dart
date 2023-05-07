@@ -9,11 +9,12 @@ import 'provider/login_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  runApp(DevicePreview(
-    enabled: true,
-    builder: (context) => const MyApp(),
-  ));
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

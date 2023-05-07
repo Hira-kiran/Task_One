@@ -58,23 +58,11 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             ShaderMask(
               shaderCallback: (rect) {
-                return LinearGradient(
-                    stops: const [0.0, 0.1, 0.6],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      AppColors.whiteColor,
-                      AppColors.whiteColor.withOpacity(0.9),
-                      AppColors.whiteColor.withOpacity(0.05)
-                    ]).createShader(rect);
+                return AppColors.whiteGradient.createShader(rect);
               },
               blendMode: BlendMode.dstOut,
               child: Container(
-                decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [AppColors.blackColor, AppColors.blackColor])),
+                decoration: BoxDecoration(gradient: AppColors.blackGradient),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: ListView(
