@@ -7,14 +7,14 @@ import 'package:task_one/constant/images.dart';
 import '../utils/utils.dart';
 import 'signup_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class GitFolderScreen extends StatefulWidget {
+  const GitFolderScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GitFolderScreen> createState() => _GitFolderScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GitFolderScreenState extends State<GitFolderScreen> {
   final auth = FirebaseAuth.instance;
   bool isExpanded = false;
   String selectedValue = 'Categories';
@@ -42,37 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        /*   appBar: AppBar(
-        automaticallyImplyLeading: false,
-        toolbarHeight: 70,
-        backgroundColor: AppColors.blackColor,
-        centerTitle: true,
-        title: const Text(
-          "Gift Folder",
-          style: TextStyle(
-              fontSize: 20,
-              fontFamily: AppFonts.interFont,
-              fontWeight: FontWeight.w700),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () async {
-                // For logout user
-                await auth.signOut().then((value) {
-                  Utils().toastmsj(
-                    "Logout Successfully",
-                  );
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SignupScreen()));
-                }).onError((error, stackTrace) {
-                  Utils().toastmsj(error.toString());
-                });
-              },
-              icon: const Icon(Icons.logout))
-        ],
-      ), */
         body: Stack(
       children: [
         Container(
@@ -272,3 +241,43 @@ class _HomeScreenState extends State<HomeScreen> {
 //       ),
 
 
+
+
+
+
+
+
+
+
+
+   /*   appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 70,
+        backgroundColor: AppColors.blackColor,
+        centerTitle: true,
+        title: const Text(
+          "Gift Folder",
+          style: TextStyle(
+              fontSize: 20,
+              fontFamily: AppFonts.interFont,
+              fontWeight: FontWeight.w700),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                // For logout user
+                await auth.signOut().then((value) {
+                  Utils().toastmsj(
+                    "Logout Successfully",
+                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignupScreen()));
+                }).onError((error, stackTrace) {
+                  Utils().toastmsj(error.toString());
+                });
+              },
+              icon: const Icon(Icons.logout))
+        ],
+      ), */

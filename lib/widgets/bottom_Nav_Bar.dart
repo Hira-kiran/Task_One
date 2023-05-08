@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:task_one/constant/colors.dart';
-import 'package:task_one/view/home_screen.dart';
+import 'package:task_one/view/git_folder_screen.dart';
 import 'package:task_one/view/profile_screen.dart';
 
 class BottomNavigationW extends StatefulWidget {
@@ -15,7 +15,7 @@ class BottomNavigationW extends StatefulWidget {
 class _BottomNavigationWState extends State<BottomNavigationW> {
   int index = 0;
   List screens = [
-    const HomeScreen(),
+    const GitFolderScreen(),
     const ProfileScreen(),
   ];
   @override
